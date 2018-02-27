@@ -40,7 +40,7 @@ public class SmoothieDao implements Dao<Smoothie, Integer> {
         List<Smoothie> smoothiet = new ArrayList<>();
 
         try (Connection conn = database.getConnection()) {
-            ResultSet result = conn.prepareStatement("SELECT id, nimi FROM Smoothie").executeQuery();
+            ResultSet result = conn.prepareStatement("SELECT id, nimi FROM Smoothie ORDER BY LOWER(Smoothie.Nimi)").executeQuery();
 
             while (result.next()) {
                 smoothiet.add(new Smoothie(result.getInt("id"), result.getString("nimi")));
@@ -84,13 +84,9 @@ public class SmoothieDao implements Dao<Smoothie, Integer> {
     @Override
     public void poista(Integer key) throws SQLException {
         try (Connection conn = database.getConnection()) {
-            PreparedStatement stmt1 = conn.prepareStatement("DELETE FROM SmoothieAinesosa WHERE smoothie_id = ?");
-            stmt1.setInt(1, key);
-            stmt1.executeUpdate();
-
-            PreparedStatement stmt2 = conn.prepareStatement("DELETE FROM Smoothie WHERE id = ?");
-            stmt2.setInt(1, key);
-            stmt2.executeUpdate();
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM Smoothie WHERE id = ?");
+            stmt.setInt(1, key);
+            stmt.executeUpdate();
         }
     }
 

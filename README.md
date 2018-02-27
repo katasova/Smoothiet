@@ -1,0 +1,10 @@
+#Smoothiearkisto
+
+Smoothiearkisto on web-sovellus smoothieiden luomista, tarkastelua ja arkistointia varten. Sovelluksen etusivulla ovat linkit ”Luo uusi smoothie” ja ”Tarkastele ja lisää aineksia”. Näiden yläpuolelle myös listataan luotujen smoothieiden nimet linkkeinä, joista löytyy tarkemmat reseptit.
+
+“Luo uusi smoothie”-linkki vie /smoothieluonti/- sivulle, jossa on listattuna luotujen smoothieiden nimet. Nimien alapuolella on poista-nappi, joka poistaa kyseisen smoothien tietokannasta. Tältä kyseiseltä sivulta myös löytyy toiminnallisuus uuden smoothien lisäämiselle ja niiden muokkaamiselle. Smoothien muokkaaminen sisältää pudotusvalikkona smoothien nimen ja lisättävän ainesosan. Ainesosat luodaan etusivulta löytyvän ”Tarkastele ja lisää aineksia”-linkin kautta. Smoothieluonnista löytyy myös kohdat lisäysjärjestys, määrä ja ohje. Näihin kohtiin syöttämällä tietoa lisätään ja muokataan kyseisiä arvoja. Lisäysjärjestys-kenttä sisältää lukuja, jotka vaikuttavat ainesosien laittamisjärjestykseen. Mitä pienempi positiivinen kokonaisluku on kyseessä, sitä aikaisemmin ainesosa lisätään ohjeessa. Sivun alalaidasta löytyy nappi takaisin etusivulle.
+
+Etusivulta löytyvästä ”Tarkastele ja lisää aineksia”-linkin kautta pääsee ainesosalistaan. Täällä myös lisätään uusia ainesosia tietokantaan. Sivun alussa on lista ainesosista, sekä napit poista ja näytä smoothiet. Poista-nappi poistaa ainesosan tietokannasta. Ainesosaa sisältävät smoothiet eivät kuitenkaan poistu, mutta ainesosa niiden reseptistä katoaa. Poista-napin alapuolella oleva ”Näytä smoothiet”-nappi ohjaa toiselle sivulle, joissa on listattuna smoothieiden nimiä jotka sisältävät kyseistä ainesosaa. Smoothieiden nimistä klikkaamalla pääsee kyseisen smoothien reseptiin. Sivu myös listaa kuinka monessa smoothiessa kyseistä ainesosaa löytyy. Sivun alin linkki ohjaa takaisin ainesosalistaan.
+
+Sovellukseen luodut smoothiet tulevat näkyviin etusivulle, joista klikkaamalla pääsee kyseiseen reseptiin. Reseptien ainesosat on numeroitu /smoothieluonti/ lisäysjärjestys-kentän mukaan. Resepti sisältää ainesosan, määrän ja ohjeen. Tämänkin sivun lopusta löytyy linkki takaisin etusivulle.
+

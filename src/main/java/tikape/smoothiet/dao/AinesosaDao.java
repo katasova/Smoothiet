@@ -41,7 +41,7 @@ public class AinesosaDao implements Dao<Ainesosa, Integer> {
         List<Ainesosa> ainesosat = new ArrayList<>();
 
         try (Connection conn = database.getConnection()) {
-                ResultSet result = conn.prepareStatement("SELECT * FROM Ainesosa").executeQuery();
+                ResultSet result = conn.prepareStatement("SELECT * FROM Ainesosa ORDER BY LOWER(Ainesosa.Nimi)").executeQuery();
 
             while (result.next()) {
                 ainesosat.add(new Ainesosa(result.getInt("id"), result.getString("nimi"), result.getString("allergeeni")));
@@ -85,14 +85,10 @@ public class AinesosaDao implements Dao<Ainesosa, Integer> {
 
     @Override
     public void poista(Integer key) throws SQLException {
-        try (Connection conn = database.getConnection()) {
-                PreparedStatement stmt1 = conn.prepareStatement("DELETE FROM SmoothieAinesosa WHERE ainesosa_id = ?");
-                stmt1.setInt(1, key);
-                stmt1.executeUpdate();
-            
-                PreparedStatement stmt2 = conn.prepareStatement("DELETE FROM Ainesosa WHERE id = ?");
-                stmt2.setInt(1, key);
-                stmt2.executeUpdate();
+        try (Connection conn = database.getConnection()) {          
+                PreparedStatement stmt = conn.prepareStatement("DELETE FROM Ainesosa WHERE id = ?");
+                stmt.setInt(1, key);
+                stmt.executeUpdate();
         }
     }
 

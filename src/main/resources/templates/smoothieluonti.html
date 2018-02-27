@@ -9,7 +9,7 @@
 
         <ul>
             <li th:each="smoothie: ${smoothiet}">
-                <span th:text="${smoothie.nimi}">esimerkkismoothie</span>
+                <a th:href="@{~/smoothie/{smoothieId}/(smoothieId=${smoothie.id})}" th:text="${smoothie.nimi}">testi</a>
                 <form method="POST" th:action="@{~/smoothie/{smoothieId}/delete(smoothieId=${smoothie.id})}"><input type="submit" value="Poista"/></form>
             <br/>
             </li>

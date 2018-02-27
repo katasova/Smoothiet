@@ -48,7 +48,7 @@ public class Main {
             map.put("smoothiet", smoothieLista);
             map.put("ainesosa", a);
             map.put("maara", maara);
-    
+
             return new ModelAndView(map, "ainesosasmoothiet");
         }, new ThymeleafTemplateEngine());
 
@@ -92,19 +92,23 @@ public class Main {
         });
 
         Spark.post("/smoothieainesosanlisays", (req, res) -> {
-            if (!syoteOk(req.queryParams("ohje")) || !syoteOk(req.queryParams("maara")) || !syoteOk(req.queryParams("jarjestys")) || !arvoPositiivinen(req.queryParams("jarjestys"))) {
+            String ohje = req.queryParams("ohje");
+            if(ohje.isEmpty()){
+                ohje = "-";
+            }
+            if (!syoteOk(req.queryParams("maara")) || !syoteOk(req.queryParams("jarjestys")) || !arvoPositiivinen(req.queryParams("jarjestys"))) {
                 res.redirect("/smoothieluonti/");
                 return "";
             }
-            SmoothieAinesosa ainesosa = new SmoothieAinesosa(-1, Integer.parseInt(req.queryParams("smoothieId")), Integer.parseInt(req.queryParams("ainesosaId")), Integer.parseInt(req.queryParams("jarjestys")), "", req.queryParams("maara"), req.queryParams("ohje"));
+            SmoothieAinesosa ainesosa = new SmoothieAinesosa(-1, Integer.parseInt(req.queryParams("smoothieId")), Integer.parseInt(req.queryParams("ainesosaId")), Integer.parseInt(req.queryParams("jarjestys")), "", req.queryParams("maara"), ohje);
             sa.tallenna(ainesosa);
             res.redirect("/smoothieluonti/");
             return "";
         });
 
         Spark.post("/smoothie/:id/delete", (req, res) -> {
-            smoothiet.poista(Integer.parseInt(req.params(":id")));
             sa.poistaSmoothiet(Integer.parseInt(req.params(":id")));
+            smoothiet.poista(Integer.parseInt(req.params(":id")));
             res.redirect("/smoothieluonti/");
             return "";
         });
@@ -121,8 +125,8 @@ public class Main {
         });
 
         Spark.post("/ainesosa/:id/delete", (req, res) -> {
-            ainesosat.poista(Integer.parseInt(req.params(":id")));
             sa.poistaAinesosat(Integer.parseInt(req.params(":id")));
+            ainesosat.poista(Integer.parseInt(req.params(":id")));
             res.redirect("/ainesosa/");
             return "";
         });
