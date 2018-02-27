@@ -94,7 +94,7 @@ public class SmoothieAinesosaDao implements Dao<SmoothieAinesosa, Integer> {
         List<Integer> smoothieIdt = new ArrayList<>();
         
         try (Connection conn = database.getConnection()) {
-            PreparedStatement stmt = conn.prepareStatement("SELECT smoothie_id, Smoothie.nimi FROM SmoothieAinesosa, Smoothie WHERE SmoothieAinesosa.ainesosa_id = 2 AND SmoothieAinesosa.smoothie_id = Smoothie.id GROUP BY smoothie_id, Smoothie.nimi ORDER BY LOWER(Smoothie.nimi);");
+            PreparedStatement stmt = conn.prepareStatement("SELECT smoothie_id, Smoothie.nimi FROM SmoothieAinesosa, Smoothie WHERE SmoothieAinesosa.ainesosa_id = ? AND SmoothieAinesosa.smoothie_id = Smoothie.id GROUP BY smoothie_id, Smoothie.nimi ORDER BY LOWER(Smoothie.nimi);");
             stmt.setInt(1, key);
             ResultSet result = stmt.executeQuery();
             
