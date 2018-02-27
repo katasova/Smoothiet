@@ -96,7 +96,7 @@ public class Main {
             if(ohje.isEmpty()){
                 ohje = "-";
             }
-            if (!syoteOk(req.queryParams("maara")) || !syoteOk(req.queryParams("jarjestys")) || !arvoPositiivinen(req.queryParams("jarjestys"))) {
+            if ((req.queryParams("smoothieId")) == null || (req.queryParams("ainesosaId")) == null || !syoteOk(req.queryParams("maara")) || !syoteOk(req.queryParams("jarjestys")) || !arvoPositiivinen(req.queryParams("jarjestys"))) {
                 res.redirect("/smoothieluonti/");
                 return "";
             }
