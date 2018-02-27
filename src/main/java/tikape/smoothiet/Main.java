@@ -13,8 +13,7 @@ import tikape.smoothiet.domain.*;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        if (System.getenv(
-                "PORT") != null) {
+        if (System.getenv("PORT") != null) {
             Spark.port(Integer.valueOf(System.getenv("PORT")));
         }
 
